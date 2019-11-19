@@ -1,0 +1,3 @@
+To run and test the Model,run in bash shell with ipython3 installed.
+Usage:
+ipython3 main.py
