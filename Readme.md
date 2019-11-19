@@ -1,4 +1,4 @@
-To run and test the Music Instrument Identifier Model,run in bash shell with ipython3 installed.
+To run and test the 'Music Instrument Identifier' Model,run in bash shell with ipython3 installed.
 Usage:
 ipython3 main.py
 
