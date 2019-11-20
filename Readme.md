@@ -1,6 +1,6 @@
 To run and test the 'Music Instrument Identifier' Model,run in bash shell with ipython3 installed.
-Usage:
 
+Usage:
 ipython3 main.py [CustomFilePAth]
 
 Note: Arguments in [ ] are optional
