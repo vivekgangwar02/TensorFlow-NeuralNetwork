@@ -1,9 +1,12 @@
 To run and test the 'Music Instrument Identifier' Model,run in bash shell with ipython3 installed.
 Usage:
+
 ipython3 main.py [CustomFilePAth]
-Note: Arguments in [] are optional
+
+Note: Arguments in [ ] are optional
 
 Python modules that needs to be preinstalled to run main.py:
+
 1)tensorflow
 2)pandas
 3)sklearn
