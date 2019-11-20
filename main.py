@@ -4,7 +4,7 @@
 # In[1]:
 
 
-import re, os, random, warnings
+import re, os, sys, random, warnings
 warnings.filterwarnings('ignore')
 import tensorflow as tf
 import logging
@@ -82,25 +82,62 @@ def predict(X):
         #Predictions
         pred = predictions.eval(feed_dict = {x:X, rate: 1 })
                                                     #keep_prob is deprecated and will be removed in a future version
-        print('This is',class_names[int(pred.argmax(axis=1))] )
+        print('This Instrument is',class_names[int(pred.argmax(axis=1))])
     
 
 
-# In[6]:
+# In[5]:
+
+
+def in_notebook(): #To check if code is running in shell or in iPython
+    try:
+        from IPython import get_ipython
+        if 'IPKernelApp' not in get_ipython().config:  # pragma: no cover
+            return False
+    except ImportError:
+        return False
+    return True
+
+
+# In[8]:
 
 
 if __name__=="__main__":
-    print('''Press Enter to select any random file and Predict
-    Press 'q' and hit Enter to Exit: ''')
-    while input()!='q':
-        path = randomfile('Dataset/')
-        #print(path)
-        playsound(path)
-        xtemp = preprocessing.audioToVector(path)
-        X = np.array(xtemp)[np.newaxis,:]
-        X = (X-min(X[0])) / (max(X[0])-min(X[0]))
-        predict(X)
-    print('Exit')
+    if not in_notebook():
+        if len(sys.argv) > 1:
+            try:
+                path = sys.argv[1]
+                playsound(path)
+                xtemp = preprocessing.audioToVector(path)
+                X = np.array(xtemp)[np.newaxis,:]
+                X = (X-min(X[0])) / (max(X[0])-min(X[0]))
+                predict(X)
+            except Exception:
+                print('Something wrong with the File specified')
+        else:
+            print('''Some random audio will be played and identified automatically:
+Press Enter to continue or
+Input 'q' to Exit: ''')
+            while input()!='q':
+                path = randomfile('Dataset/')
+                playsound(path)
+                xtemp = preprocessing.audioToVector(path)
+                X = np.array(xtemp)[np.newaxis,:]
+                X = (X-min(X[0])) / (max(X[0])-min(X[0]))
+                predict(X)
+            print('Exit Command')
+    else:
+        print('''Some random audio will be played and identified automatically:
+Press Enter to continue or
+Input 'q' to Exit: ''')
+        while input()!='q':
+            path = randomfile('Dataset/')
+            playsound(path)
+            xtemp = preprocessing.audioToVector(path)
+            X = np.array(xtemp)[np.newaxis,:]
+            X = (X-min(X[0])) / (max(X[0])-min(X[0]))
+            predict(X)
+        print('Exit Command')
 
 
 # In[ ]:
