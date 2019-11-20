@@ -3,7 +3,7 @@ To run and test the 'Music Instrument Identifier' Model,run in bash shell with i
 Usage:
 ipython3 main.py [CustomFilePAth]
 
-Note: Arguments in [ ] are optional
+Note: Arguments in [ ] are optional and model works only with banjo, cello, clarinet, french horn, guitar, oboe, trumpet and  violin
 
 Python modules that needs to be preinstalled to run main.py:
 
